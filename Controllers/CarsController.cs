@@ -25,26 +25,19 @@ namespace fullstack_gregslist.Controllers
       {
         return Ok(_cs.GetAll());
       }
-      catch (System.Exception)
+      catch (System.Exception err)
       {
 
-        throw;
+        return BadRequest(err.Message);
       }
     }
 
-    [Authorize]
-    [HttpPost]
-    public ActionResult<Car> Create([FromBody] Car newCar)
+    [HttpGet("{id}")]
+    public ActionResult<Car> GetById(int id)
     {
       try
       {
-        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        if (user == null)
-        {
-          throw new Exception("Must be logged in to create.");
-        }
-        newCar.UserId = user.Value;
-        return Ok(_cs.Create(newCar));
+        return Ok(_cs.GetById(id));
       }
       catch (System.Exception err)
       {
@@ -52,23 +45,58 @@ namespace fullstack_gregslist.Controllers
       }
     }
 
-    [Authorize]
+    //[Authorize]
+    [HttpPost]
+    public ActionResult<Car> Create([FromBody] Car newCar)
+    {
+      try
+      {
+        // Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        //if (user == null)
+        //{
+        //  throw new Exception("Must be logged in to create.");
+        //}
+        //newCar.UserId = user.Value;
+        newCar.UserId = "fix me";
+        return Ok(_cs.Create(newCar));
+      }
+        catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+
+    //[Authorize]
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {
       try
       {
-        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        if (user == null)
-        {
-          throw new Exception("you must be logged in to delete");
-        }
-        string userId = user.Value;
+        //Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        //if (user == null)
+        //{
+        //  throw new Exception("you must be logged in to delete");
+        //}
+        //string userId = user.Value;
+        string userId = "fix me";
         return Ok(_cs.Delete(id, userId));
       }
       catch (System.Exception error)
       {
         return BadRequest(error.Message);
+      }
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<Car> Edit(int id, [FromBody] Car updatedCar)
+    {
+      try
+      {
+        return Ok(_cs.Edit(id, updatedCar));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
       }
     }
 

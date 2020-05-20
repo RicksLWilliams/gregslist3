@@ -45,5 +45,21 @@ namespace fullstack_gregslist.Repositories
       int affectedRows = _db.Execute(sql, new { id, userId });
       return affectedRows == 1;
     }
+
+    internal Car Edit(Car carToUpdate)
+    {
+      string sql = @"
+        UPDATE cars
+        SET
+          Make = @Make,
+          Model = @Model,
+          ProductionYear = @ProductionYear,
+          Price = @Price,
+          ImgUrl = @ImgUrl
+        WHERE id = @Id LIMIT 1";
+      _db.Execute(sql, carToUpdate);
+      return carToUpdate;
+    }
+
   }
 }

@@ -37,6 +37,7 @@ export default new Vuex.Store({
     },
     async getCars({ commit, dispatch }) {
       try {
+        console.log("getCars")
         let res = await api.get("cars")
         commit("setCars", res.data)
       } catch (err) {

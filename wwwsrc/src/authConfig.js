@@ -1,3 +1,3 @@
-export const domain = "codeworksclassroom.auth0.com";
-export const audience = "https://codeworksclassroom.com";
-export const clientId = "pOXw2OGv1LsYi7LEBmDF04RLkXQvldml";
+export const domain = "dev-x0hagl0b.auth0.com";
+export const audience = "https://gregslist.com";
+export const clientId = "XiNMTXrs6aM7Is2M6jzFcTWymqOKbU90";

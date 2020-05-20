@@ -46,5 +46,18 @@ namespace fullstack_gregslist.Controllers
       }
       throw new Exception("Somethin bad happened");
     }
+
+    internal Car Edit(int id, Car updatedCar)
+    {
+      Car foundCar = GetById(id);
+      //NOTE GetById() is already handling our null checking
+      foundCar.Make  = updatedCar.Make;
+      foundCar.Model   = updatedCar.Model;
+      foundCar.ProductionYear   = updatedCar.ProductionYear;
+      foundCar.Price = updatedCar.Price;
+      foundCar.ImgUrl = updatedCar.ImgUrl;
+      foundCar.Body = updatedCar.Body;
+      return _repo.Edit(foundCar);
+    }
   }
 }
