@@ -1,4 +1,2 @@
-INSERT INTO cars
-(make, model, imgUrl, body, productionyear, price, userId)
-VALUES
-("Chevy","Tracker", "https://lh3.googleusercontent.com/proxy/7JSA0qnl12LyOlLe_nZxAWZ-0YCLvxSkBPJHcYRCs8b-Kh6sXtBX4p-AcWpqAnK5C6YSKlP6GEVOKlgG6ERcaB9IcnTzXZ2lWnfzP4mcDEtOPe87k-XoSzLI6f4rjVhDD_JWDA", "Itsa tracker", 1989, 2000, "D$")
+insert into houses (bedrooms,bathrooms,year, price, levels,imgUrl, description, userId )
+values (1,1, 2000, 200000, 1 , 'https://i.pinimg.com/originals/ba/f7/0c/baf70c5b98139b74bff7235a25183a4c.jpg', 'nice house', 'test')
