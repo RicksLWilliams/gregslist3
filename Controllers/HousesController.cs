@@ -45,7 +45,7 @@ namespace fullstack_gregslist.Controllers
       }
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost]
     public ActionResult<House> Create([FromBody] House newHouse)
     {
@@ -66,7 +66,7 @@ namespace fullstack_gregslist.Controllers
       }
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {

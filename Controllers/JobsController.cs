@@ -45,19 +45,19 @@ namespace fullstack_gregslist.Controllers
       }
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost]
     public ActionResult<Job> Create([FromBody] Job newJob)
     {
       try
       {
-        // Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        //if (user == null)
-        //{
-        //  throw new Exception("Must be logged in to create.");
-        //}
-        //newCar.UserId = user.Value;
-        newJob.UserId = "fix me";
+        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        if (user == null)
+        {
+         throw new Exception("Must be logged in to create.");
+        }
+        newJob.UserId = user.Value;
+        //newJob.UserId = "fix me";
         return Ok(_js.Create(newJob));
       }
         catch (System.Exception err)
@@ -66,19 +66,19 @@ namespace fullstack_gregslist.Controllers
       }
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {
       try
       {
-        //Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        //if (user == null)
-        //{
-        //  throw new Exception("you must be logged in to delete");
-        //}
-        //string userId = user.Value;
-        string userId = "fix me";
+        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        if (user == null)
+        {
+         throw new Exception("you must be logged in to delete");
+        }
+        string userId = user.Value;
+        //string userId = "fix me";
         return Ok(_js.Delete(id, userId));
       }
       catch (System.Exception error)
