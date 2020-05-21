@@ -60,6 +60,8 @@ namespace fullstack_gregslist
       services.AddTransient<CarsRepository>();
       services.AddTransient<HousesService>();
       services.AddTransient<HousesRepository>();
+      services.AddTransient<JobsService>();
+      services.AddTransient<JobsRepository>();
     }
 
     private IDbConnection CreateDbConnection()
